@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>krestiki-noliki</title>
+</head>
+<body>
+<center>
+    <div style="display: inline-block; vertical-align: top">
+         <img onclick="change1('1')" id="1" src="pusto.png" border="1">
+         <img onclick="change1('2')" id="2" src="pusto.png"  border="1">
+         <img onclick="change1('3')" id="3" src="pusto.png" border="1">
+        <br />
+         <img onclick="change1('4')" id="4" src="pusto.png" border="1">
+         <img onclick="change1('5')" id="5" src="pusto.png" border="1">
+         <img onclick="change1('6')" id="6" src="pusto.png" border="1">
+        <br />
+         <img onclick="change1('7')" id="7" src="pusto.png" border="1">
+         <img onclick="change1('8')" id="8" src="pusto.png" border="1">
+         <img onclick="change1('9')" id="9" src="pusto.png" border="1">
+    </div>
+    <div id="s4et" style="display: inline-block; margin-left: 40px; vertical-align: top; " >
+        <div style="display: inline-block">
+             <img src="X.png" height="40" width="40">
+            <font size = "80">:</font>
+            <div id="krest" style="display: inline-block; font-size: 80px">
+                0
+            </div>
+             <img src="O.png" height="40" width="40">
+            <font size = "80">:</font>
+            <div id = "nol" style="display: inline-block; font-size: 80px">
+                0
+            </div>
+        </div>
+    <br />
+    <button onclick="sbros2 ()"><img src="sbros.png" height="40" width="40"></button>
+    </div>
+
+
+  </center>
+
+
+
+
+
+</body>
+
+<script>
+z = true;
+
+function change1 (id){
+    if(document.getElementById(id).src.includes('pusto.png')) {
+        z = !z;
+        if (z == true) {
+            document.getElementById(id).src = "X.png"
+        } else {
+            document.getElementById(id).src = "O.png"
+        }
+        check1 ('1', '2', '3');
+        check1 ('4', '5', '6');
+        check1 ('7', '8', '9');
+
+        check1 ('1', '4', '7');
+        check1 ('2', '5', '8');
+        check1 ('3', '6', '9');
+
+        check1 ('1', '5', '8');
+        check1 ('7', '5', '3');
+    }
+
+}
+
+function sbros () {
+        document.getElementById('1').src="pusto.png";
+        document.getElementById('2').src="pusto.png";
+        document.getElementById('3').src="pusto.png";
+        document.getElementById('4').src="pusto.png";
+        document.getElementById('5').src="pusto.png";
+        document.getElementById('6').src="pusto.png";
+        document.getElementById('7').src="pusto.png";
+        document.getElementById('8').src="pusto.png";
+        document.getElementById('9').src="pusto.png";
+}
+
+function sbros2 () {
+    sbros ()
+    document.getElementById('krest').innerHTML = '0';
+    document.getElementById('nol').innerHTML = '0';
+
+}
+
+
+function check1 (id1, id2, id3) {
+    result =  document.getElementById(id1).src === document.getElementById(id2).src && document.getElementById(id1).src === document.getElementById(id3).src && !document.getElementById(id1).src.includes('pusto.png')
+    if (result == true){
+
+        if (document.getElementById(id1).src.includes('X.png')){
+            document.getElementById('krest').innerHTML = parseInt(document.getElementById('krest').innerHTML) + 1
+        }
+        if (document.getElementById(id1).src.includes('O.png')) {
+            document.getElementById('nol').innerHTML = parseInt(document.getElementById('nol').innerHTML) + 1
+        }
+        sbros()
+    }
+}
+
+    </script>
+</html>
